@@ -1,5 +1,5 @@
-import Navigation from "./components/Navigation";
-import Logo from "./components/Logo";
+import Navigation from "@/app/_components/Navigation";
+import Logo from "@/app/_components/Logo";
 // Pay attention to the structure in this function
 
 // This metadata is the title

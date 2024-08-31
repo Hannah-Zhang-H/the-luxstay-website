@@ -1,4 +1,4 @@
-import Navigation from "../components/Navigation";
+import Counter from "@/app/_components/Counter";
 
 function Page() {
   return (

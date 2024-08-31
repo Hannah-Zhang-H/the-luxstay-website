@@ -1,4 +1,4 @@
-import Navigation from "../components/Navigation";
+import Navigation from "../_components/Navigation";
 
 function About() {
   return <h1>About page</h1>;
