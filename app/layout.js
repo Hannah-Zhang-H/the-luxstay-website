@@ -6,7 +6,10 @@ import "@/app/_styles/globals.css";
 
 // This metadata is the title
 export const metadata = {
-  title: "The LuxStay",
+  // title: "The LuxStay",
+  title: { template: "%s / The LuxStay", default: "Welcome / The LuxStay" },
+  description:
+    "Peaceful, luxurious lakefront scenery, calm, reflecting lakes, surrounded by stunning high-end natural landscapes - it's all here at LuxStay",
 };
 
 export default function RootLayout({ children }) {

@@ -1,5 +1,7 @@
 import Navigation from "../_components/Navigation";
-
+export const metadata = {
+  title: "Account",
+};
 function Account() {
   return (
     <div>
