@@ -20,7 +20,7 @@ export default function Home() {
         </h1>
         <Link
           href="/villas"
-          className="bg-primary-800 px-8 py-6 text-accent-50 text-lg font-semibold hover:bg-accent-600 transition-all"
+          className="bg-primary-800 px-8 py-4 text-accent-50 text-lg font-semibold hover:bg-accent-600 transition-all"
         >
           Explore luxury villas
         </Link>
