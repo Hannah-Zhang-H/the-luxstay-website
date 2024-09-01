@@ -1,24 +1,34 @@
 import Link from "next/link";
 
-// This is a component, each page will use it as the default decoration
-
-function Navigation() {
+export default function Navigation() {
   return (
-    <ul>
-      <li>
-        <Link href="/">Home</Link>
-      </li>
-      <li>
-        <Link href="/villas">Villas</Link>
-      </li>
-      <li>
-        <Link href="/about">About</Link>
-      </li>
-      <li>
-        <Link href="/account">Your Account</Link>
-      </li>
-    </ul>
+    <nav className="z-10 text-xl">
+      <ul className="flex gap-16 items-center">
+        <li>
+          <Link
+            href="/villas"
+            className="hover:text-accent-400 transition-colors"
+          >
+            Villas
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/about"
+            className="hover:text-accent-400 transition-colors"
+          >
+            About
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/account"
+            className="hover:text-accent-400 transition-colors"
+          >
+            Guest area
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 }
-
-export default Navigation;
