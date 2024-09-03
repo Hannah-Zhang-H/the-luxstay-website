@@ -1,15 +1,13 @@
-import VillaCard from "@/app/_components/VillaCard";
-import { getVillas } from "../_lib/data-service";
+import { Suspense } from "react";
+import VillaList from "../_components/VillaList";
+import Spinner from "../_components/Spinner";
 
 /* eslint-disable react/no-unescaped-entities */
 export const metadata = {
   title: "Villas",
 };
 
-export default async function Page() {
-  // CHANGE
-  const villas = await getVillas();
-
+export default function Page() {
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
@@ -24,13 +22,10 @@ export default async function Page() {
         paradise.
       </p>
 
-      {villas.length > 0 && (
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-14">
-          {villas.map((villa) => (
-            <VillaCard villa={villa} key={villa.id} />
-          ))}
-        </div>
-      )}
+      {/* Using Supense will not cover the content in p tag for a better UE  */}
+      <Suspense fallback={<Spinner />}>
+        <VillaList />
+      </Suspense>
     </div>
   );
 }
