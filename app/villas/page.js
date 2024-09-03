@@ -1,13 +1,14 @@
 import VillaCard from "@/app/_components/VillaCard";
+import { getVillas } from "../_lib/data-service";
 
 /* eslint-disable react/no-unescaped-entities */
 export const metadata = {
   title: "Villas",
 };
 
-export default function Page() {
+export default async function Page() {
   // CHANGE
-  const villas = [];
+  const villas = await getVillas();
 
   return (
     <div>

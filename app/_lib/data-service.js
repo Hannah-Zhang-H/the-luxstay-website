@@ -3,7 +3,7 @@ import { supabase } from "./supabase";
 /////////////
 // GET
 
-export async function getvilla(id) {
+export async function getVilla(id) {
   const { data, error } = await supabase
     .from("villas")
     .select("*")
@@ -20,7 +20,7 @@ export async function getvilla(id) {
   return data;
 }
 
-export async function getvillaPrice(id) {
+export async function getVillaPrice(id) {
   const { data, error } = await supabase
     .from("villas")
     .select("normalPrice, discount")
@@ -34,7 +34,7 @@ export async function getvillaPrice(id) {
   return data;
 }
 
-export const getvillas = async function () {
+export const getVillas = async function () {
   const { data, error } = await supabase
     .from("villas")
     .select("id, name, maxCapacity, normalPrice, discount, image")
@@ -93,7 +93,7 @@ export async function getBookings(guestId) {
   return data;
 }
 
-export async function getBookedDatesByvillaId(villaId) {
+export async function getBookedDatesByVillaId(villaId) {
   let today = new Date();
   today.setUTCHours(0, 0, 0, 0);
   today = today.toISOString();
