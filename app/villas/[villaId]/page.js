@@ -2,6 +2,12 @@ import { getVilla } from "@/app/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
+// Dynamically generate the title
+export async function generateMetadata({ params }) {
+  const { name } = await getVilla(params.villaId);
+  return { title: `Villa ${name}` };
+}
+
 export default async function Page({ params }) {
   // Here the villaId is the same as this folder's name
   const villa = await getVilla(params.villaId);
