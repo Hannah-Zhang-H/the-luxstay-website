@@ -1,5 +1,3 @@
-import Navigation from "@/app/_components/Navigation";
-import Logo from "@/app/_components/Logo";
 // Pay attention to the structure in this function
 
 import "@/app/_styles/globals.css";
