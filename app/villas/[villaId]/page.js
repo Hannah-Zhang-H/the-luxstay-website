@@ -1,4 +1,4 @@
-import { getVilla } from "@/app/_lib/data-service";
+import { getVilla, getVillas } from "@/app/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
@@ -6,6 +6,19 @@ import Image from "next/image";
 export async function generateMetadata({ params }) {
   const { name } = await getVilla(params.villaId);
   return { title: `Villa ${name}` };
+}
+
+/*
+This code is used to generate static pages for all possible dynamic route parameters (villaId) in the Next.js 
+application based on the villa data obtained from the backend. 
+It ensures that these pages are pre-generated at build time, 
+improving the performance of the application and user experience.
+*/
+export async function generateStaticParams() {
+  const villas = await getVillas();
+  // This line of code iterates over the obtained villa array (villas) and creates an object for each villa. This object contains a villaId attribute, which is the value of the villa id converted to a string.
+  const ids = villas.map((villa) => ({ villaId: String(villa.id) }));
+  return ids;
 }
 
 export default async function Page({ params }) {
