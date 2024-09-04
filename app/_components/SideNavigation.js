@@ -27,6 +27,7 @@ const navLinks = [
 ];
 
 function SideNavigation() {
+  // Get the query string from url for further filtering
   const pathname = usePathname();
 
   return (
