@@ -2,11 +2,15 @@
 import Image from "next/image";
 import bg from "@/public/bg.png";
 import about2 from "@/public/about-2.jpg";
+import { getVillas } from "../_lib/data-service";
+
+export const revalidate = 5;
 
 export const metadata = {
   title: "About",
 };
-export default function Page() {
+export default async function Page() {
+  const villas = await getVillas();
   return (
     <div className="grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center">
       <div className="col-span-3">
@@ -23,11 +27,11 @@ export default function Page() {
             savoring life's simple joys with loved ones.
           </p>
           <p>
-            Our ten exclusive villas offer a warm and inviting refuge, yet the
-            true tranquility and freedom lie in the majestic mountains that
-            surround you. Stroll through vibrant woodlands, inhale the crisp,
-            clean air, and gaze at the stars from the comfort of your private
-            hot tub or by the crackling campfire.
+            Our {villas.length} exclusive villas offer a warm and inviting
+            refuge, yet the true tranquility and freedom lie in the majestic
+            mountains that surround you. Stroll through vibrant woodlands,
+            inhale the crisp, clean air, and gaze at the stars from the comfort
+            of your private hot tub or by the crackling campfire.
           </p>
           <p>
             This is a place where unforgettable memories are crafted, amidst the
@@ -64,10 +68,10 @@ export default function Page() {
           <p>
             Over the years, we’ve preserved the soul of The LuxStay, combining
             the enduring beauty of the mountains with the personalized care that
-            only a family business can provide. At The Wild Oasis, you’re more
-            than a guest; you’re part of our family’s legacy. Visit us soon,
-            where tradition and tranquility come together, and each stay feels
-            like coming home.
+            only a family business can provide. At The LuxStay, you’re more than
+            a guest; you’re part of our family’s legacy. Visit us soon, where
+            tradition and tranquility come together, and each stay feels like
+            coming home.
           </p>
 
           <div>

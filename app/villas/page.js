@@ -2,6 +2,12 @@ import { Suspense } from "react";
 import VillaList from "../_components/VillaList";
 import Spinner from "../_components/Spinner";
 
+// It's a middle ground between a fully dynamic and fully static
+// By changing the frequence of change, the site will refreash every this frequence
+// export const revalidate = 3600;
+// But I decided to do it in the specific VillaList component, because
+// this page is stll static, only the data needs dynamic
+
 /* eslint-disable react/no-unescaped-entities */
 export const metadata = {
   title: "Villas",
