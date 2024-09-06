@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import VillaList from "../_components/VillaList";
 import Spinner from "../_components/Spinner";
 import Filter from "@/app/_components/Filter";
+import ReservationReminder from "../_components/ReservationReminder";
 
 // It's a middle ground between a fully dynamic and fully static
 // By changing the frequence of change, the site will refreash every this frequence
@@ -37,6 +38,7 @@ export default function Page({ searchParams }) {
       {/* Using Supense will not cover the content in p tag for a better UE  */}
       <Suspense fallback={<Spinner />} key={filter}>
         <VillaList filter={filter} />
+        <ReservationReminder />
       </Suspense>
     </div>
   );
