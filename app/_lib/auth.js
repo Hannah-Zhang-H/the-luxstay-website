@@ -19,14 +19,19 @@ export const authConfig = {
       return session;
     },
     async redirect({ url, baseUrl }) {
+      // If logs out
+      console.log(url);
+      if (url === baseUrl || url.includes("/signout")) {
+        return baseUrl; // 默认重定向到主页
+      }
       // Redirect to account page or other page after successful login
       return `${baseUrl}/account`;
     },
   },
 
-  // pages: {
-  //   signIn: "/login",
-  // },
+  pages: {
+    signIn: "/login",
+  },
 };
 
 // // The following way is not working
