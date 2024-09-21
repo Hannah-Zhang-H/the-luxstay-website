@@ -28,10 +28,7 @@ export default async function Navigation() {
         </li>
 
         <li>
-          <a
-            href="https://the-luxstay-9e4q9f729-hans-projects-fe402708.vercel.app/login"
-            target="_blank"
-          >
+          <a href="https://the-luxstay.vercel.app/login" target="_blank">
             Staff log in
           </a>
         </li>
