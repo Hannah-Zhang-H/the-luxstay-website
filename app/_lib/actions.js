@@ -7,7 +7,7 @@ import { revalidatePath } from "next/cache";
 import { getBookings } from "./data-service";
 import { redirect } from "next/navigation";
 
-//======================= updateGuestInfo ==========================
+//================================= updateGuestInfo ===============================
 export async function updateGuestInfo(formData) {
   const session = await getServerSession(authConfig);
   if (!session) throw new Error("You must be logged in");
@@ -33,7 +33,7 @@ export async function updateGuestInfo(formData) {
   revalidatePath("/account/profile");
 }
 
-//======================= deleteReservation ==========================
+//================================= deleteReservation ====================================
 export async function deleteReservation(bookingId) {
   const session = await getServerSession(authConfig);
   if (!session) throw new Error("You must be logged in");
@@ -53,7 +53,7 @@ export async function deleteReservation(bookingId) {
   revalidatePath("/account/reservations");
 }
 
-//======================= updateBooking ==========================
+//=============================== updateBooking ====================================
 export async function updateBooking(formData) {
   const bookingId = Number(formData.get("bookingId"));
 
@@ -84,4 +84,31 @@ export async function updateBooking(formData) {
   revalidatePath("/account/reservations");
 
   redirect("/account/reservations");
+}
+
+//=============================== createBooking ====================================
+export async function createBooking(bookingData, formData) {
+  const bookingId = Number(formData.get("bookingId"));
+
+  const session = await getServerSession(authConfig);
+  if (!session) throw new Error("You must be logged in");
+
+  const newBooking = {
+    ...bookingData,
+    guestId: session.user.guestId,
+    numGuests: Number(formData.get("numGuests")),
+    extraMessage: formData.get("extraMessage").slice(0, 1000),
+    extraFee: 0,
+    totalFee: bookingData.totalFee,
+    isPaid: false,
+    hasBreakfast: false,
+    status: "unconfirmed",
+  };
+
+  const { error } = await supabase.from("bookings").insert([newBooking]);
+
+  if (error) throw new Error("Booking could not be created");
+
+  revalidatePath(`/villas/${bookingData.villaId}`);
+  redirect("/villas/thankyou");
 }
