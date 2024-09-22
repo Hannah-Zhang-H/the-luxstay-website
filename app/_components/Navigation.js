@@ -29,7 +29,7 @@ export default async function Navigation() {
 
         <li>
           <a
-            href="https://the-luxstay.vercel.app/login"
+            href="https://the-luxstay.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
           >
