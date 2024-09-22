@@ -29,6 +29,7 @@ export default async function Navigation() {
 
         <li>
           <a
+            className="hover:text-accent-400 transition-colors"
             href="https://the-luxstay.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
