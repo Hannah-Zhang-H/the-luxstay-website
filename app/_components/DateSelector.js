@@ -29,7 +29,6 @@ function DateSelector({ settings, villa, bookedDates }) {
   const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
 
   const { normalPrice, discount } = villa;
-  // Check if both range.from and range.to are defined
   const numNights =
     displayRange.from && displayRange.to
       ? differenceInDays(displayRange.to, displayRange.from)
@@ -37,11 +36,35 @@ function DateSelector({ settings, villa, bookedDates }) {
   const villaPrice = numNights * (normalPrice - discount);
 
   // SETTINGS
-
   const { minBookingLength, maxBookingLength } = settings;
   const parsedBookedDates = bookedDates.map((date) =>
     typeof date === "string" ? new Date(date) : date
   );
+
+  // Convert time zone UTC
+  const handleSelect = (range) => {
+    if (range?.from) {
+      const utcFrom = new Date(
+        Date.UTC(
+          range.from.getFullYear(),
+          range.from.getMonth(),
+          range.from.getDate()
+        )
+      );
+      range.from = utcFrom;
+    }
+    if (range?.to) {
+      const utcTo = new Date(
+        Date.UTC(
+          range.to.getFullYear(),
+          range.to.getMonth(),
+          range.to.getDate()
+        )
+      );
+      range.to = utcTo;
+    }
+    setRange(range); // Renew range
+  };
 
   return (
     <div className="flex flex-col justify-between">
@@ -55,7 +78,7 @@ function DateSelector({ settings, villa, bookedDates }) {
         maxDate={new Date().getFullYear() + 5}
         captionLayout="dropdown"
         numberOfMonths={2}
-        onSelect={setRange}
+        onSelect={handleSelect}
         selected={displayRange}
         disabled={(curDate) =>
           isPast(curDate) ||
