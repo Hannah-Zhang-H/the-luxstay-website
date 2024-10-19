@@ -1,3 +1,9 @@
+# Guest-facing website
+
+## Vercel link - https://the-luxstay-website.vercel.app/
+<img width="1912" alt="image" src="https://github.com/user-attachments/assets/8d7d2627-efef-40fb-8062-9248c759088b">
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
