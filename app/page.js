@@ -1,3 +1,4 @@
+// Part of the code is based on the tutorial from Jonas Schmedtmann
 import Link from "next/link";
 import Image from "next/image";
 // I don't want to specify the actual width and height, so I import this image
@@ -8,7 +9,7 @@ export default function Home() {
     <main className="mt-24">
       <Image
         src={bg}
-        alt="Mountains and forests with two cabins"
+        alt="Mountains and forests with two villas"
         fill
         className="object-cover object-top"
         placeholder="blur"
